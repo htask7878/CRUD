@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "update_data";
+}
+
+
+@{
+    foreach(System.Data.DataRow dr in ViewBag.u_data.Rows)
+    {
+        <form method="post">
+    <table>
+        <tr>
+            <td>Enter Name:</td>
+            <td><input type="text" name="name" value="@dr["name"].ToString()"/></td>
+        </tr>
+        <tr>
+            <td>Enter Email:</td>
+            <td><input type="email" name="email" value="@dr["email"].ToString()"/></td>
+        </tr>
+        <tr>
+            <td>Enter Password:</td>
+            <td><input type="password" name="password" value="@dr["password"].ToString()"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="save" value="send" /></td>
+        </tr>
+    </table>
+</form>
+    }
+}

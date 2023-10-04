@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form method="post">
+    <table>
+        <tr>
+            <td>Enter Name:</td>
+            <td><input type="text" name="name" /></td>
+        </tr>
+         <tr>
+            <td>Enter Email:</td>
+            <td><input type="email" name="email" /></td>
+        </tr>
+        <tr>
+            <td>Enter Password:</td>
+            <td><input type="password" name="password" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="save" value="send" /></td>
+        </tr>
+    </table>
+</form>
+
+<table class="table">
+    <th>Id</th>
+    <th>name</th>
+    <th>email</th>
+    <th>password</th>
+    @{
+
+        foreach (System.Data.DataRow dr in ViewBag.user_data.Rows)
+        {
+            <tr>
+             <td>@dr["id"].ToString()</td>
+             <td>@dr["name"].ToString()</td>
+             <td>@dr["email"].ToString()</td>
+             <td>@dr["password"].ToString()</td>
+                <td><a href="Home/delete/@dr["id"].ToString()">Delete</a></td>
+                <td>@Html.ActionLink("Update","update_data",new{u_id=dr["id"].ToString()})</td>
+
+            </tr>
+        }
+    }
+</table>
